@@ -1,8 +1,8 @@
 import React from 'react';
-import {MyInfoI} from '../model/interface/MyInfoI';
+import {IMyInfo} from '../model/interface/IMyInfo';
 
 
-export default ({ name, age, isStudent }: MyInfoI) => {
+export default ({ name, age, isStudent }: IMyInfo) => {
     return(
         <div>
             <h2>{name}</h2>

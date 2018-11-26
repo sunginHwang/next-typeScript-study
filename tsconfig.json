@@ -4,7 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "jsx": "preserve",
-    "lib": ["dom", "es2017"],
+    "lib": ["dom", "es7"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -16,6 +16,7 @@
     "sourceMap": true,
     "noImplicitAny": false,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "baseUrl": "./"
   }
 }

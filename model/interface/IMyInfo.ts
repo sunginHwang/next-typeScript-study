@@ -1,4 +1,4 @@
-export interface MyInfoI {
+export interface IMyInfo {
     name: string;
     age: number;
     isStudent: boolean;
