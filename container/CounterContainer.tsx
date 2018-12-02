@@ -19,7 +19,7 @@ class CountContainer extends Component<{
     onCountIncreaseClick = () =>{
         const {props} = this as any;
         const { CounterActions } = props;
-        CounterActions.increment();
+        CounterActions.increment(1);
     };
 
     render() {
