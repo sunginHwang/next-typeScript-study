@@ -1,11 +1,11 @@
 import App, {Container} from 'next/app'
 import React from 'react'
 import withRedux from 'next-redux-wrapper'
-import configureStore from '../core/store/configureStore';
+import initializeStore from '../core/store/configureStore';
 import { Provider } from 'react-redux'
 
 
-export default withRedux(configureStore)( class MyApp extends App  {
+export default withRedux(initializeStore)( class MyApp extends App  {
 
 
     render () {
@@ -18,4 +18,4 @@ export default withRedux(configureStore)( class MyApp extends App  {
             </Provider>
         </Container>
     }
-} as any )
+} as any)
