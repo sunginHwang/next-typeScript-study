@@ -3,7 +3,7 @@ import * as CounterAction from "../actions/CounterAction";
 import {asyncSagaCallBack} from "../../utils/ReduxSagaUtil";
 
 import * as api from "../apis/TestApis";
-import {IJpholderInfo} from "../../../model/interface/IJpholderInfo";
+import {IBlogInfo} from "../../../model/interface/IBlogInfo";
 
 type actionType = {
     type: string,
@@ -13,7 +13,7 @@ type actionType = {
 function * increaseSaga(info: actionType) {
     yield console.log(info.payload);
     yield call(asyncSagaCallBack,CounterAction.actionCreators.decrement,api.asyncCall,info.payload,
-        function* success(success: IJpholderInfo) {
+        function* success(success: IBlogInfo) {
             yield console.log(12);
             yield console.log(success);
         } as any,
