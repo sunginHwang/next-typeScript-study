@@ -3,5 +3,5 @@ import {IBlogComment} from "./IBlogComment";
 
 export interface IBlogInfo{
     blog_content: IBlogContent;
-    blog_comment: [IBlogComment];
+    blog_comment?: [IBlogComment];
 }

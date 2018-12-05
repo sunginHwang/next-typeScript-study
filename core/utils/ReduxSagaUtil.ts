@@ -21,14 +21,3 @@ export function * asyncSagaCallBack(asyncFunc, apiFunc, payload, successFunc, fa
     }
 }
 
-
-
-export function * asyncSagaCall(asyncFunc, apiFunc, payload) : any {
-
-    /*    yield put(asyncFunc.request()); // 요청대기*/
-
-    yield console.log(asyncFunc);
-    const result = yield call(apiFunc, payload); // 비동기처리 promise
-    yield console.log(result);
-
-}

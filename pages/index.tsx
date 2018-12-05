@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SubComponent from '../component/SubComponent';
 import AsyncContainer from '../container/AsyncContainer';
 import CounterContainer from '../container/CounterContainer';
+import PostContainer from '../container/PostContainer';
 
 class Index extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class Index extends Component {
                     age={12}
                     isStudent={true}
                 />
+                <PostContainer/>
             </div>
         );
     }
