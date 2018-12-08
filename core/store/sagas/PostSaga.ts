@@ -1,4 +1,4 @@
-import {all, takeLatest, call} from "redux-saga/effects";
+import {all, takeLatest, call, put} from "redux-saga/effects";
 import * as PostAction from "../actions/PostAction";
 
 import * as api from "../apis/TestApis";
@@ -20,7 +20,8 @@ function * getPostInfo(info: actionType) {
 
     try {
         const result :AxiosResponse<apiCommonResponse> = yield call(api.asyncCall,info.payload); // 비동기처리 promise
-        yield call(PostAction.actionCreators.getPostSuccess,result.data.result); // API 요청 실패 이후 작업
+        yield console.log('saga success');
+        yield put(PostAction.actionCreators.getPostSuccess(result.data.result)); // API 요청 실패 이후 작업
 
     } catch(error) { // API 요청 자체 실패
         yield call(PostAction.actionCreators.getPostFailure); // API 요청 실패 이후 작업
