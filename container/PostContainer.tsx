@@ -8,7 +8,7 @@ import {IBlogComment} from "../model/interface/IBlogComment";
 
 
 class PostContainer extends Component<{
-    blog_contents: IBlogContent;
+    blog_content: IBlogContent;
     blog_comment?: IBlogComment[];
     PostActions: typeof postActions;
 }> {
@@ -26,9 +26,9 @@ class PostContainer extends Component<{
     };
 
     render() {
-/*
+
         const {props} = this as any;
-*/
+        console.log(props);
 
         return(
             <div>
@@ -39,8 +39,8 @@ class PostContainer extends Component<{
 }
 
 export default connect(
-    ({ blogInfo }: StoreState) => ({
-        blog_contents: blogInfo.blog_content
+    ({ post }: StoreState) => ({
+        blog_content: post.blog_content
     }),
     (dispatch) => ({
         PostActions: bindActionCreators(postActions, dispatch)
