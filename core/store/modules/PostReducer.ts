@@ -17,16 +17,17 @@ const initialState: IBlogInfo = {
     blog_comment: undefined
 };
 
-export default handleActions<IBlogInfo>(
+export default handleActions<IBlogInfo, any>(
     {
         [action.GET_POST]: (state) => {
             return {...state};
         },
         [action.GET_POST_SUCCESS]: (state, action: Action<IBlogContentRes>): IBlogInfo => {
+            const boardInfo: IBlogContentRes = action.payload!;
             return {
                 ...state,
-                blog_content: action.payload!.board_content,
-                blog_comment: action.payload!.board_commnet
+                blog_content: boardInfo!.board_content,
+                blog_comment: boardInfo!.board_commnet
             };
         },
         [action.GET_POST_FAILURE]: (state) => {
