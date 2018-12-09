@@ -33,6 +33,20 @@ export default handleActions<IBlogInfo, any>(
         [action.GET_POST_FAILURE]: (state) => {
             return {...state};
         },
+        [action.GET_POST_COMMON.REQUEST]: (state) => {
+            return {...state};
+        },
+        [action.GET_POST_COMMON.SUCCESS]: (state, action: Action<IBlogContentRes>): IBlogInfo => {
+            const boardInfo: IBlogContentRes = action.payload!;
+            return {
+                ...state,
+                blog_content: boardInfo!.board_content,
+                blog_comment: boardInfo!.board_commnet
+            };
+        },
+        [action.GET_POST_COMMON.FAILURE]: (state) => {
+            return {...state};
+        },
 
     },
     initialState
