@@ -33,8 +33,8 @@ export interface ActionFuncType {
 export function asyncActionCreator (actionName:string, actions: ActionCreatorType): ActionFuncType {
     let test:{[key: string]: ActionFunctionAny<Action<any>>} = {};
     test[actionName] = createAction(actions.INDEX);
-    test[actionName+'Request'] = createAction(actions.REQUEST);
-    test[actionName+'Success'] = createAction(actions.SUCCESS);
-    test[actionName+'Failure'] = createAction(actions.FAILURE);
+    test[actionName+'_Request'] = createAction(actions.REQUEST);
+    test[actionName+'_Success'] = createAction(actions.SUCCESS);
+    test[actionName+'_Failure'] = createAction(actions.FAILURE);
     return test;
 }

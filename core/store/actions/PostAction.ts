@@ -7,15 +7,18 @@ export const GET_POST_FAILURE:string = 'post/GET_POST_FAILURE';
 export const GET_POST_COMMON:ActionCreatorType = asyncActionTypeCreator('post/GET_POST_COMMON');
 
 function combineActionAndAsyncActionCreator(){
-    let result:{[key: string]: ActionFunctionAny<Action<any>>} = {};
+    const result:{[key: string]: ActionFunctionAny<Action<any>>} = {};
 
     result.push({'getPost': createAction(GET_POST)});
     result.push({'getPostSuccess': createAction(GET_POST_SUCCESS)});
     result.push({'getPostFailure': createAction(GET_POST_FAILURE)});
     result.push.apply(asyncActionCreator('getPostCommon',GET_POST_COMMON));
-
     return result;
 }
 
-export const actionCreators = combineActionAndAsyncActionCreator();
+export const actionCreators =  {
+    getPost: createAction(GET_POST),
+    getPostSuccess: createAction(GET_POST_SUCCESS),
+    getPostFailure: createAction(GET_POST_FAILURE),
 
+};
