@@ -20,7 +20,6 @@ function* getPostInfo(info: actionType) {
 
     try {
         const result: AxiosResponse<apiCommonResponse> = yield call(api.asyncCall, info.payload); // 비동기처리 promise
-        yield console.log('saga success');
         yield put(PostAction.actionCreators.getPostSuccess(result.data.result)); // API 요청 실패 이후 작업
 
     } catch (error) { // API 요청 자체 실패

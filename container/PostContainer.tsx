@@ -24,7 +24,6 @@ class PostContainer extends Component<{
         const {props} = this as any;
         const { PostActions } = props;
         PostActions.getPostCommon(180);
-
     };
 
     render() {
