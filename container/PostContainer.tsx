@@ -23,7 +23,7 @@ class PostContainer extends Component<{
     onGetPostClick = () =>{
         const {props} = this as any;
         const { PostActions } = props;
-        PostActions.getPost(180);
+        PostActions.getPostCommon(180);
 
     };
 

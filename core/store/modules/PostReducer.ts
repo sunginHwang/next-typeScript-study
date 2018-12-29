@@ -1,5 +1,5 @@
 import {Action, handleActions} from 'redux-actions';
-import { actionCreators as action }  from '../actions/PostAction';
+import * as action  from '../actions/PostAction';
 import {IBlogInfo} from '../../../model/interface/IBlogInfo';
 import {IBlogContentRes} from "../../../model/interface/apis/IBlogContentRes";
 
@@ -19,7 +19,7 @@ const initialState: IBlogInfo = {
 
 export default handleActions<IBlogInfo, any>(
     {
-        [action.ge]: (state) => {
+        [action.GET_POST]: (state) => {
             return {...state};
         },
         [action.GET_POST_SUCCESS]: (state, action: Action<IBlogContentRes>): IBlogInfo => {
@@ -36,8 +36,8 @@ export default handleActions<IBlogInfo, any>(
         [action.GET_POST_COMMON.REQUEST]: (state) => {
             return {...state};
         },
-        [action.GET_POST_COMMON.SUCCESS]: (state, action: Action<IBlogContentRes>): IBlogInfo => {
-            const boardInfo: IBlogContentRes = action.payload!;
+        [action.GET_POST_COMMON.SUCCESS]: (state, action: any): IBlogInfo => {
+            const boardInfo: IBlogContentRes = action.data!;
             return {
                 ...state,
                 blog_content: boardInfo!.board_content,

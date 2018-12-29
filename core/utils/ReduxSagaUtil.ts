@@ -1,6 +1,6 @@
 import { call, put } from "redux-saga/effects";
 import { AxiosResponse} from "axios";
-import {ActionFuncType} from "./ReduxUtil";
+import {Action, ActionFunctionAny} from "redux-actions";
 
 
 interface apiCommonResponse {
@@ -9,20 +9,25 @@ interface apiCommonResponse {
     state: boolean
 };
 
-export function * asyncSagaCallBack(asyncFunc:ActionFuncType, apiFunc, payload, successFunc, failureFunc) : any {
+export function * asyncSagaCallBack(asyncFunc:ActionFunctionAny<Action<any>>, apiFunc, payload, successFunc, failureFunc) : any {
 
-   yield put(asyncFunc.request()); // 요청대기
+    yield put({type:`${asyncFunc}_REQUEST`}); // 요청대기
 
     try {
         const result :AxiosResponse<apiCommonResponse> = yield call(apiFunc,payload); // 비동기처리 promise
-       /* yield put(asyncFunc.success(result.data)); // 비동기 처리 성공*/
-        const resultData: any = yield result.data;
-        yield put({type:`${asyncFunc}_SUCCESS`,resultData});
-        yield call(successFunc,result.data.result); // API 요청 실패 이후 작업
+
+        if(result.data.msg === 'SUCCESS'){
+            const data = result.data.result;
+            yield put({type:`${asyncFunc}_SUCCESS`,data});
+            yield call(successFunc,result.data); // API 요청 실패 이후 작업
+        }else{
+            yield put({type:`${asyncFunc}_FAILURE`,result});
+            yield call(failureFunc,result.data); // API 요청 실패 이후 작업
+        }
 
     } catch(error) { // API 요청 자체 실패
-        yield put(asyncFunc.failure(error.response.data)); // 비동기 처리 실패
-        yield call(failureFunc,asyncFunc); // API 요청 실패 이후 작업
+        yield put({type:`${asyncFunc}_FAILURE`,error});
+        yield call(failureFunc,error); // API 요청 실패 이후 작업
     }
 }
 

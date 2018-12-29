@@ -31,7 +31,7 @@ function* getPostInfo(info: actionType) {
 
 function* getPostCommonInfo(info: actionType) {
 
-    yield call(asyncSagaCallBack, PostAction.actionCreators.getPostCommon.call, api.asyncCall, info.payload,
+    yield call(asyncSagaCallBack, PostAction.actionCreators.getPostCommon, api.asyncCall, info.payload,
         function* success(success) {
             yield console.log('saga common success');
             console.log(success);

@@ -11,14 +11,13 @@ export interface ActionCreatorType {
 
 /*비동기 액션타입 생성자*/
 export function  asyncActionTypeCreator ( prefix: string ): ActionCreatorType {
-    const asyncTypeAction: string[] = ['_INDEX','_REQUEST','_SUCCESS','_FAILURE'];
+    const asyncTypeAction: string[] = ['_REQUEST','_SUCCESS','_FAILURE'];
 
-    const actionNameIndex: string = asyncTypeAction[0];
-    const actionNameRequest: string = asyncTypeAction[1];
-    const actionNameSuccess: string = asyncTypeAction[2];
-    const actionNameFailure: string = asyncTypeAction[3];
+    const actionNameRequest: string = asyncTypeAction[0];
+    const actionNameSuccess: string = asyncTypeAction[1];
+    const actionNameFailure: string = asyncTypeAction[2];
     return {
-        INDEX: prefix+actionNameIndex,
+        INDEX: prefix,
         REQUEST: prefix+actionNameRequest,
         SUCCESS: prefix+actionNameSuccess,
         FAILURE: prefix+actionNameFailure
